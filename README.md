@@ -1,3 +1,5 @@
+![MCPuppet](mcpuppet.jpeg)
+
 # MCPuppet
 
 A proof of concept MCP Workflow Orchestrator that demonstrates workflow monitoring, audit logging, and policy-based execution ordering for AI applications using MCP tools.
@@ -128,7 +130,7 @@ Edit `config.json` to customize:
 ## 📁 Project Structure
 
 ```
-conductorio/
+MCPuppet/
 ├── main.py                    # Main entry point
 ├── orchestrator.py            # Core workflow orchestrator
 ├── workflow_policies.py       # Policy engine
