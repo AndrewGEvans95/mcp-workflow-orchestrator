@@ -1,0 +1,163 @@
+{
+  "downstream_servers": {
+    "validate_data": "http://localhost:8001",
+    "process_data": "http://localhost:8002",
+    "backup_data": "http://localhost:8003",
+    "send_notification": "http://localhost:8004",
+    "require_approval": "http://localhost:8005"
+  },
+  "policies": {
+    "sequential_dependencies": {
+      "process_data": ["validate_data"],
+      "backup_data": ["process_data"],
+      "send_notification": ["backup_data"]
+    },
+    "parallel_restrictions": {
+      "validate_data": ["process_data"]
+    },
+    "conditional_execution": {
+      "process_data": {
+        "requires_success": "validate_data",
+        "success_criteria": {
+          "must_contain": ["valid", "validated_data"]
+        }
+      },
+      "backup_data": {
+        "requires_success": "process_data",
+        "success_criteria": {
+          "must_contain": ["success", "processed_data"]
+        }
+      }
+    },
+    "approval_required": [
+      "require_approval"
+    ]
+  },
+  "workflow_templates": {
+    "customer_onboarding": {
+      "description": "Complete customer onboarding process with validation, processing, backup, and notification",
+      "steps": [
+        {
+          "tool": "validate_data",
+          "dependencies": [],
+          "approval_required": false
+        },
+        {
+          "tool": "process_data", 
+          "dependencies": ["validate_data"],
+          "approval_required": false
+        },
+        {
+          "tool": "backup_data",
+          "dependencies": ["process_data"],
+          "approval_required": false
+        },
+        {
+          "tool": "send_notification",
+          "dependencies": ["backup_data"],
+          "approval_required": false
+        }
+      ]
+    },
+    "financial_processing": {
+      "description": "Secure financial processing with fraud check, approval, and audit trail",
+      "steps": [
+        {
+          "tool": "validate_data",
+          "dependencies": [],
+          "approval_required": false
+        },
+        {
+          "tool": "require_approval",
+          "dependencies": ["validate_data"],
+          "approval_required": true
+        },
+        {
+          "tool": "process_data",
+          "dependencies": ["require_approval"],
+          "approval_required": false
+        },
+        {
+          "tool": "backup_data",
+          "dependencies": ["process_data"],
+          "approval_required": false
+        },
+        {
+          "tool": "send_notification",
+          "dependencies": ["process_data"],
+          "approval_required": false
+        }
+      ]
+    },
+    "data_pipeline": {
+      "description": "ETL data pipeline with validation, processing, and monitoring",
+      "steps": [
+        {
+          "tool": "validate_data",
+          "dependencies": [],
+          "approval_required": false
+        },
+        {
+          "tool": "process_data",
+          "dependencies": ["validate_data"],
+          "approval_required": false
+        },
+        {
+          "tool": "backup_data",
+          "dependencies": ["process_data"],
+          "approval_required": false
+        }
+      ]
+    },
+    "emergency_response": {
+      "description": "Emergency response workflow with immediate notification and approval bypass",
+      "steps": [
+        {
+          "tool": "send_notification",
+          "dependencies": [],
+          "approval_required": false
+        },
+        {
+          "tool": "validate_data",
+          "dependencies": [],
+          "approval_required": false
+        },
+        {
+          "tool": "process_data",
+          "dependencies": ["validate_data"],
+          "approval_required": false
+        },
+        {
+          "tool": "backup_data",
+          "dependencies": ["process_data"],
+          "approval_required": false
+        }
+      ]
+    }
+  },
+  "audit_settings": {
+    "log_directory": "audit_logs",
+    "retention_days": 365,
+    "log_level": "INFO",
+    "enable_real_time_monitoring": true,
+    "enable_compliance_reporting": true
+  },
+  "monitoring": {
+    "dashboard_enabled": true,
+    "metrics_collection": true,
+    "alert_thresholds": {
+      "policy_violations_per_hour": 10,
+      "failed_tools_per_hour": 5,
+      "average_response_time_ms": 5000
+    }
+  },
+  "security": {
+    "encryption_at_rest": true,
+    "encryption_in_transit": true,
+    "audit_log_signing": true,
+    "access_control": {
+      "require_authentication": false,
+      "roles": ["admin", "user", "auditor"]
+    }
+  }
+}
