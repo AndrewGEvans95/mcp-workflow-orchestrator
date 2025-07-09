@@ -1,10 +1,10 @@
-![MCPuppet](mcpuppet.jpeg)
+![MCPuppet](mcpuppet.jpg)
 
 # MCPuppet
 
 A proof of concept MCP Workflow Orchestrator that demonstrates workflow monitoring, audit logging, and policy-based execution ordering for AI applications using MCP tools.
 
-## 🚀 Features
+## Features
 
 - **Workflow Orchestration**: Acts as MCP server to AI applications and MCP client to downstream servers
 - **Policy Enforcement**: Sequential dependencies, parallel restrictions, conditional execution, and approval gates
@@ -13,7 +13,7 @@ A proof of concept MCP Workflow Orchestrator that demonstrates workflow monitori
 - **Template-based Workflows**: Predefined workflow patterns for common operations
 - **Policy Violation Detection**: Automatic blocking of rule violations with detailed reporting
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 AI Application → MCPuppet → Multiple MCP Servers → Tool Execution
@@ -21,12 +21,12 @@ AI Application → MCPuppet → Multiple MCP Servers → Tool Execution
               Audit Trail + Policy Enforcement
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.9+
 - Virtual environment (recommended)
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone and navigate to the project directory**
 2. **Create and activate virtual environment**:
@@ -39,7 +39,7 @@ AI Application → MCPuppet → Multiple MCP Servers → Tool Execution
    pip install -r requirements.txt
    ```
 
-## 🔗 Claude Desktop Integration
+## Claude Desktop Integration
 
 To use this as an MCP server with Claude Desktop:
 
@@ -65,7 +65,7 @@ To use this as an MCP server with Claude Desktop:
 
 See [CLAUDE_SETUP.md](CLAUDE_SETUP.md) for detailed setup instructions.
 
-## 🎯 Quick Start
+## Quick Start
 
 ### Run All Demos
 ```bash
@@ -91,7 +91,7 @@ python main.py interactive
 python main.py status
 ```
 
-## 📊 Demo Scenarios
+## Demo Scenarios
 
 ### 1. Successful Workflow
 Demonstrates a complete customer onboarding workflow:
@@ -119,7 +119,7 @@ Complete audit trail across all sessions:
 - Performance metrics
 - Compliance reporting
 
-## 🔧 Configuration
+## Configuration
 
 Edit `config.json` to customize:
 - Downstream server URLs
@@ -127,7 +127,7 @@ Edit `config.json` to customize:
 - Workflow templates
 - Audit settings
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 MCPuppet/
@@ -148,7 +148,7 @@ MCPuppet/
 └── audit_logs/              # Audit output directory
 ```
 
-## 🎨 Key Components
+## Key Components
 
 ### MCPuppet Core (`orchestrator.py`)
 - Acts as MCP server to AI applications
@@ -175,7 +175,7 @@ MCPuppet/
 - Template-based workflow execution
 - Progress tracking and validation
 
-## 🔍 Monitoring Dashboard
+## Monitoring Dashboard
 
 The system provides a real-time monitoring dashboard showing:
 
@@ -192,7 +192,7 @@ The system provides a real-time monitoring dashboard showing:
 └─────────────────────────────────────────────────┘
 ```
 
-## 🛡️ Security & Compliance
+## Security & Compliance
 
 - Complete audit trail for all MCP tool interactions
 - Policy-based access control and workflow enforcement
@@ -200,17 +200,17 @@ The system provides a real-time monitoring dashboard showing:
 - Compliance reporting and violation tracking
 - Approval workflows for sensitive operations
 
-## 🧪 Testing
+## Testing
 
 The system includes comprehensive demos that test:
-- ✅ Workflow orchestration and execution
-- ✅ Policy enforcement and violation detection
-- ✅ Audit logging and compliance reporting
-- ✅ Real-time monitoring and status tracking
-- ✅ Template-based workflow management
-- ✅ Approval gate functionality
+- Workflow orchestration and execution
+- Policy enforcement and violation detection
+- Audit logging and compliance reporting
+- Real-time monitoring and status tracking
+- Template-based workflow management
+- Approval gate functionality
 
-## 📝 Example Usage
+## Example Usage
 
 ```python
 # Create MCPuppet orchestrator
@@ -227,17 +227,17 @@ result = await orchestrator.call_tool(
 status = orchestrator.get_session_status("customer_123")
 ```
 
-## 🤝 Contributing
+## Contributing
 
 This is a proof of concept demonstrating MCPuppet's workflow orchestration capabilities. The focus is on showing the value proposition of comprehensive workflow monitoring and audit capabilities for AI tool usage.
 
-## 📄 License
+## License
 
 This project is a demonstration/proof of concept for MCPuppet workflow orchestration.
 
 ---
 
-## 🎯 Key Value Propositions
+## Key Value Propositions
 
 **For Enterprises:**
 - "Show me exactly what our AI did and prove it followed our policies"
